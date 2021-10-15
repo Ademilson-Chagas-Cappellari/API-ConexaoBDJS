@@ -7,7 +7,7 @@ import {
 // Inicializar o router express
 const router = express.Router();
 
-router.get('/estudante', getEstudante)
+router.get('/estudante', getEstudantes)
 router.get('/estudante/:matricula', getEstudanteByMatr)
 
 // export router
