@@ -1,5 +1,5 @@
 // Importar o modelo estudante
-import estudante from "../models/estudante.js"
+import estudante from "../models/estudanteMod.js"
 
 // Buscar todos os estudantes
 export const getEstudante = async(req, res) => {
@@ -15,7 +15,7 @@ export const getEstudante = async(req, res) => {
 
 export const getEstudanteByMatr = async(req, res) => {
     try {
-        const estudante = await estudante.findAll({
+        const estudantes = await estudante.findAll({
             where: {
                 matricula_estudante: req.params.matricula
             }
@@ -25,4 +25,16 @@ export const getEstudanteByMatr = async(req, res) => {
         console.log(erro)
     }
 
+}
+
+//Novo Estudante
+export const createEstudante = async(req, res) => {
+    try {
+        await estudante.create(req.body)
+        res.json({
+            "mensagem": "Novo estudante foi criado"
+        })
+    } catch (erro) {
+        console.log(erro)
+    }
 }
